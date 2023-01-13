@@ -1,13 +1,14 @@
-function destroyer(arr) {
-  for(let i = 0; i < arguments[0].length; i++){
-    for(let j = 1; j < arguments.length; j++){
-      if(arguments[0][i] == arguments[j]){
-        arguments[0].splice(i, 1)
-        i--
-      }
-    }
-  }
-  return arguments[0];
+function translatePigLatin(str) {
+
+  let consonantRegex = /^[^aeiou]+/;
+  let myConsonants = str.match(consonantRegex);
+  return myConsonants !== null
+    ? str
+        .replace(consonantRegex, "")
+        .concat(myConsonants)
+        .concat("ay")
+    : str.concat("way");
 }
 
-console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+let result = translatePigLatin("california");
+console.log(result);
